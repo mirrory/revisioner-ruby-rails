@@ -22,4 +22,10 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  database: revisioner_db
+  pool: 5
+  username: revser
+  password:
+  host: localhost
