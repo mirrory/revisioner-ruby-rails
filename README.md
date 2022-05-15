@@ -2,4 +2,4 @@
 An app to revise texts.
 
 Try it out with this live demo:
-https://revisioner.herokuapp.com/
+<a href="https://revisioner.herokuapp.com/" target="_blank">https://revisioner.herokuapp.com/</a>
