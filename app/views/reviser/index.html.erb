@@ -1,0 +1,59 @@
+<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    	<div class="modal-header">
+  			<button type="button" class="close" data-dismiss="modal">x</button>
+  			<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+		</div>
+		<div class="modal-body">
+		  *Modal content comes here*
+		</div>
+		<div class="modal-footer">
+		  <button class="btn btn-primary">Save</button>
+		</div>
+    </div>
+  </div>
+</div>
+
+<h1>The Revisioner</h1>
+<p>Creator: <a href="https://github.com/mirrory" target="_blank">M. Iori</a></p>
+<p>Revise your work!</p>
+<p>Highlight any range of text, and it will populate the edit box at the right side of the screen. Make your edits there. Then click 'Add' to add the revision.</p>
+<p>Click Review when finished revising.</p>
+
+<div style="display:none;">
+<%= link_to 'Revise', new_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-primary btn-lg'} %>
+</div>
+
+<%= form_with url: "/show", method: :post do |form| %>
+	<div id="draft" onselect="text = event.target; selection = text.value.substring(text.selectionStart, text.selectionEnd); alert(selection);" onmouseup="
+	document.getElementById('suggestion').value = '';
+	document.getElementById('suggestion').value = window.getSelection();
+	document.getElementById('rangestart').value = window.getSelection().getRangeAt(0).startOffset;
+	document.getElementById('rangeend').value = window.getSelection().getRangeAt(0).endOffset;" onload="">
+		<p id="drafttext"><%= params[:bodytext] %></p>
+	</div>
+	<%= form.hidden_field :finaltext %>
+	<%= form.hidden_field :rangestart %>
+	<%= form.hidden_field :rangeend %>
+	<%= form.submit "Review" %>
+<% end %>
+
+<div id="revision">
+	<textarea id="suggestion"></textarea>
+	<button onclick="
+	start = document.getElementById('rangestart').value;
+	end = document.getElementById('rangeend').value;
+	addHighlightStart = '<span class=\'revised\'>';
+	addHighlightEnd = '</span>';
+	/* if(document.getElementById('suggestion').value === ''){
+		addHighlightStart = '<span class=\'marked\'>';
+		document.getElementById('draft').innerHTML = document.getElementById('draft').innerHTML.substring(0, start) + addHighlightStart + document.getElementById('draft').innerHTML.substring(start, end) + addHighlightEnd + document.getElementById('draft').innerHTML.substring(end, document.getElementById('draft').innerHTML.length); 
+	} */
+	// else{
+	document.getElementById('drafttext').innerHTML = document.getElementById('drafttext').innerHTML.substring(0, start) + document.getElementById('suggestion').value + document.getElementById('drafttext').innerHTML.substring(end, document.getElementById('drafttext').innerHTML.length); 
+	// }
+	document.getElementById('suggestion').value = '';
+	document.getElementById('finaltext').value = document.getElementById('draft').innerText
+	">Add</button>
+</div>

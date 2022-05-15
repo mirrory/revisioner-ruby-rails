@@ -1,0 +1,50 @@
+body {
+	background-color:  #eee;
+	padding: 15px;
+}
+
+#bodytext {
+	min-height: 200px;
+	width:  60%;
+}
+
+#draft, #finaltext {
+	border: 1px solid black;
+	border-radius: 5px;
+	background-color: #fff;
+	margin: 5px;
+	padding: 5px;
+}
+
+#draft {
+	width: 50%;
+}
+
+#revision {
+	float: right;
+}
+
+#revision textarea {
+	min-width: 200px;
+	min-height: 150px;
+	position: fixed;
+    top: 0;
+    margin-top: 500px;
+    margin-left: -200px;
+}
+
+#revision button {
+	float: right;
+	position: fixed;
+    top: 0;
+    margin-top: 655px;
+    margin-left: -50px;
+}
+
+.revised {
+	background-color: #99ff99;
+}
+
+.marked {
+	background-color: #ff5226;
+}

@@ -1,0 +1,14 @@
+
+
+<h1>The Revisioner</h1>
+<p>Creator: <a href="https://github.com/mirrory" target="_blank">M. Iori</a></p>
+<p>Review your revised work!</p>
+<p>NOTE: Please be advised that your work will not be saved on this site. Click Copy Text to copy your work to the clipboard and Paste it elsewhere to save, such as a file on your computer or a Google Doc.</p>
+<div id="finaltext"><%= params[:finaltext] %></div>
+<button onclick="var range = document.createRange();
+                    range.selectNode(document.getElementById('finaltext'));
+                    window.getSelection().removeAllRanges();
+                    window.getSelection().addRange(range); 
+                    document.execCommand('copy');
+                    window.getSelection().removeAllRanges(); alert('Copied!');">Copy Text</button>
+<button onclick="window.location = '/'">Write Again!</button>

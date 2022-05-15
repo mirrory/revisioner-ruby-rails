@@ -1,0 +1,12 @@
+<h1>The Revisioner</h1>
+<p>Creator: <a href="https://github.com/mirrory" target="_blank">M. Iori</a></p>
+<p>First, write a short ditty, a poem or soliloquy...</p>
+<p>Click Revise Text when finished.</p>
+<p>NOTE: Please be advised that your work will not be saved on this site.</p>
+<p>NOTE II: The character limit is 50,000 characters.</p>
+
+<%= form_with url: "/revise", method: :post do |form| %>
+	<%= form.text_area :bodytext, maxlength: 50000, onchange: "" %>
+	<br />
+	<%= form.submit "Revise Text" %>
+<% end %>
